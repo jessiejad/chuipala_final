@@ -1,0 +1,31 @@
+<ion-modal-view>
+    <ion-header-bar class="bar bar-header bar-energized" align-title="center">
+        <h1 class="title">{{ 'NewDelayTitle' | translate }}</h1>
+        <button class="button button-clear button-primary" ng-click="modal.hide()"><i class="ion-android-close"></i></button>
+    </ion-header-bar>
+    <ion-content class="padding">
+
+        <form ng-submit="addDelays(datetimeValue, motfifValue)">
+
+            <div class="list">
+                <div class="item item-icon-left" ion-datetime-picker="" ng-model="datetimeValue">
+                    <i class="icon ion-ios-alarm-outline energized"></i>
+                    {{ 'ArrivalDate' | translate }}
+                    <strong class="ng-binding">{{datetimeValue| date: "dd-MM-yy H:mm"}}</strong>
+                </div>
+
+                <div class="item item-icon-left">
+                    <i class="icon ion-ios-paperplane-outline energized"></i>
+                    {{ 'Reason' | translate }}
+                    <input placeholder="{{ 'DelayReasonExample' | translate }}" type="text" name="motif" ng-model="motfifValue" required>
+                </div>
+            </div>
+        
+            <button  style="height:10%;" class="button button-full button-energized" type="submit">
+                {{ 'Add' | translate }}
+            </button>
+
+        </form>
+
+    </ion-content>
+</ion-modal-view>

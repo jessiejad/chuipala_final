@@ -1,0 +1,31 @@
+<ion-view title="{{ 'MyDelays' | translate }}">
+    <ion-nav-bar class="bar-energized" align-title="center">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+            </button>
+        </ion-nav-buttons>
+
+        <ion-nav-buttons side="right">
+            <button class="button button-icon icon ion-ios-plus" ng-click="showModal('templates/newDelays.html')">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="list">
+            <div class="item item-text-wrap" ng-repeat="delay in delays" ui-sref="app.delay({ id : delay.EventID })">
+                <h2 style="font-size:110%; text-align:center;">{{delay.Reason}}</h2>
+                <div class="item-text-wrap row">
+                    <div class="col col-50" style="text-align: left; font-size:80%">
+                        <a class="subdued">{{ 'The' | translate }} {{delay.ConcernedDate}}</a>
+                    </div>
+                    <div class="col col-50" style="text-align: right; font-size:80%">
+                        <span style="color:#ffc900; font-weight: bold" class="subdued">{{delay.Value}}{{delay.ValueUnit}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

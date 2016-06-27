@@ -1,0 +1,19 @@
+<ion-view title="{{ 'Settings' | translate }}" class="bodyColor scroll" hide-back-button="true" cache-view="false">
+    <ion-content has-header="true" scroll="true" style="position: fixed;">
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    {{ 'LanguageTitle' | translate }}
+                </div>
+                <select ng-options="language as language.label for language in languages"
+                        ng-model="chosenLanguage" ng-change="ChangeLanguage(chosenLanguage.reference)">
+
+                </select>
+                <!--select>
+                    <option ng-repeat="language in languages" ng-select="ChangeLanguage(language.reference)">{{language.label}}</option>
+                </select-->
+            </label>
+
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,49 @@
+<ion-view title="{{ 'MyDelay' | translate }}">
+    <ion-nav-bar class="bar-energized" align-title="center">
+        <ion-nav-back-button class="button-clear">
+            <i class="ion-arrow-left-c"></i> {{ 'Back' | translate }}
+        </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="list card">
+            <div class="item" style="background-color:#ffc900">
+                <h2 style="font-size:130%; text-align:center; color:white">{{delay.Reason}}</h2>
+                <div class="item-text-wrap row">
+                    <div class="col col-50" style="text-align: left; font-size:80%">
+                        <span style="color:white" class="subdued">{{ 'The' | translate }} {{delay.ConcernedDate}}</span>
+                    </div>
+                    <div class="col col-50" style="text-align: right; font-size:80%">
+                        <span style="color:white; font-weight: bold" class="subdued">{{delay.Value}}{{delay.ValueUnit}}</span>
+                    </div>
+                </div>
+            </div>
+        
+            <ion-item class="item-text-wrap">
+                <h2 style="font-size:110%; text-align:center;">{{delay.ConcernedClass.SubjectLabel}}</h2>
+                <h4 ng-if="!isProfessor" class="subdued" style="text-align:center;">{{delay.ConcernedClass.ProfessorFullName}}</h4>
+                <h4 ng-if="isProfessor" class="subdued" style="text-align:center;">
+                    <span ng-repeat="group in delay.ConcernedClass.Groups">
+                        {{group}} -
+                    </span>
+                </h4>
+
+                <div class="item-text-wrap row">
+                    <div class="col col-50" style="text-align: left; font-size:80%">
+                        <span class="subdued">{{ 'From' | translate }} {{delay.ConcernedClass.StartDate}}</span>
+                    </div>
+                    <div class="col col-50" style="text-align: right; font-size:80%">
+                        <span class="subdued">{{ 'To' | translate }} {{delay.ConcernedClass.EndDate}}</span>
+                    </div>
+                </div>
+                <div class="item-text-wrap row">
+                    <div class="col col-50" style="text-align: left; font-size:80%">
+                        <span class="subdued">{{ 'At' | translate }} {{delay.ConcernedClass.StartTime}}</span>
+                    </div>
+                    <div class="col col-50" style="text-align: right; font-size:80%">
+                        <span class="subdued">{{ 'At' | translate }} {{delay.ConcernedClass.EndTime}}</span>
+                    </div>
+                </div>
+            </ion-item>
+        </div>
+    </ion-content>
+</ion-view>

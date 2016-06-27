@@ -1,0 +1,40 @@
+<ion-view title="{{ 'Application_Name' | translate }}" class="bodyColor scroll" hide-back-button="true" cache-view="false">
+    <ion-nav-bar class="bar-stable" align-title="center">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content has-header="true" scroll="true" style="position: fixed;">
+        <form ng-submit="login(email, password)">
+            <div class="list">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">{{ 'UserName' | translate }}</span>
+                    <input type="email" id="email" placeholder="{{ 'UserName' | translate }}" ng-model="email">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">{{ 'Password' | translate }}</span>
+                    <input type="password" id="password" placeholder="{{ 'Password' | translate }}" ng-model="password">
+                </label>
+                <!--li class="item item-checkbox">
+                    <label class="checkbox">
+                        <input type="checkbox" name="remember" data-ng-click="rememberMe()" data-ng-model="remember">
+                    </label>
+                    Remember Me !
+                </li-->
+            </div>
+            <div ng-if="loginErrors" style="color: #ef473a; text-align: center">
+                <div ng-if="loginErrors.wrong">Les informations entrées sont incorrectes</div>
+                <div ng-if="loginErrors.connexion">Vous êtes actuellement hors connexion</div>
+                <div ng-if="loginErrors.server">Un problème est survenue lors de la communication avec le serveur</div>
+            </div>
+            <div class="padding">
+                <button class="button button-block button-positive">
+                    {{ 'Login' | translate }}
+                </button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

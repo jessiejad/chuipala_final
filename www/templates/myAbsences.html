@@ -1,0 +1,29 @@
+<ion-view title="{{ 'MyAbsences' | translate }}">
+    <ion-nav-bar class="bar-assertive" align-title="center">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+            </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon icon ion-ios-plus" ng-click="showModal('templates/newAbsences.html')">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content>
+        <div class="list">
+            <div class="item item-text-wrap" ng-repeat="absence in absences" ui-sref="app.absence({ id : absence.EventID })">
+                <h2 style="font-size:110%; text-align:center;">{{absence.Reason}}</h2>
+                <div class="item-text-wrap row">
+                    <div class="col col-50" style="text-align: left; font-size:80%">
+                        <span class="subdued">{{ 'From' | translate }} {{absence.StartDate}}</span>
+                    </div>
+                    <div class="col col-50" style="clear: right; text-align: right; font-size:80%">
+                        <span class="subdued">{{ 'To' | translate }} {{absence.StopDate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

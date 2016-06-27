@@ -1,0 +1,86 @@
+<ion-view title="{{ 'MyClasses' | translate }}" class="bodyColor scroll" hide-back-button="true" cache-view="false">
+    <!--ion-nav-bar class="navbar-default bar-stable" align-title="center">
+        <ion-nav-back-button>
+        </ion-nav-back-button>
+        <ion-nav-buttons side="left">
+            <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+            </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons side="right">
+            <button class="button button-icon icon ion-ios-calendar" ng-click="">
+            </button>
+        </ion-nav-buttons>
+    </ion-nav-bar-->
+    <ion-content has-header="true" scroll="true" style="position: fixed;">
+        <h6 style="text-align: center; color: dimgrey">
+            -- {{ 'Today' | translate }} --
+        </h6>
+        <div class="card" ng-repeat="class in classes">
+            <div ng-if="class.IsUserAbsent"
+                 class="item item-divider" style="text-align: center; background: #ef473a">
+                {{class.StartTime}} - {{class.EndTime}}
+            </div>
+            <div ng-if="!(class.IsUserAbsent) && class.IsUserLate"
+                 class="item item-divider" style="text-align: center; background: #ffc900">
+                {{class.StartTime}} - {{class.EndTime}}
+            </div>
+            <div ng-if="!(class.IsUserAbsent) && !(class.IsUserLate)"
+                 class="item item-divider" style="text-align: center">
+                {{class.StartTime}} - {{class.EndTime}}
+            </div>
+            <div class="item-text-wrap">
+                <ion-list>
+                    <ion-item>
+                        <div>
+                            {{class.SubjectLabel}}
+                            <p ng-if="!(IsUserProfessor)">
+                                {{class.ProfessorFullName}}
+                                <span style="color: #33cd5f" ng-if="!(class.IsProfessorAbsent) && !(class.IsProfessorLate)"> {{ 'OnTime' | translate }}</span>
+                                <span style="color: #ef473a" ng-if="class.IsProfessorAbsent"> {{ 'Absent' | translate }}</span>
+                                <span style="color: #ffc900" ng-if="!(class.IsProfessorAbsent) && class.IsProfessorLate"> {{ 'Late' | translate }}</span>
+                            </p>
+                            <!--p style="color: #ef473a" ng-if="(IsUserProfessor) && class.IsProfessorAbsent">{{ 'AbsentFromMyClass' | translate }}</p>
+                            <p style="color: #ffc900" ng-if="(IsUserProfessor) && class.IsProfessorLate">{{ 'LateForMyClass' | translate }}</p-->
+
+                        </div>
+                            <ion-option-button side="right" class="button button-energized" ng-click="showModalDelay('templates/newDelays.html', class.PreSetDelayDate)">
+                                <i class="icon ion-ios-alarm-outline"></i>
+                            </ion-option-button>
+                            <ion-option-button side="right" class="button button-assertive" ng-click="showModalAbsence('templates/newAbsences.html', class.FullStartDate, class.FullEndDate)">
+                                <i class="icon ion-ios-calendar-outline"></i>
+                            </ion-option-button>
+                    </ion-item>
+                </ion-list>
+            </div>
+            <div class="item-text-wrap" ng-if="IsUserProfessor">
+                <div class="row" style="background: whitesmoke">
+                    <div class="col col-33" style="text-align: left">
+                        <span style="color: #ffc900; font-size:130%;">{{class.NbDelays}} <i class="icon ion-ios-alarm-outline"></i></span>
+                    </div>
+
+                    <div class="col col-33" style="text-align: center" ng-click="showModalComplex('templates/showAllAbsencesDelays.html', class.ClassID)">
+                        <i style="font-size:130%;"class="icon ion-ios-search"></i>
+                    </div>
+                    <div class="col col-33" style="text-align: right" ng-click="showModalComplex('templates/showAllAbsencesDelays.html', class.ClassID)">
+                        <span style="color: #ef473a; font-size:130%;">{{class.NbAbsences}} <i class="icon ion-ios-calendar-outline"></i></span>
+                    </div>
+                </div>
+                <!--div class="row" >
+                    <div class="col col-33" style="text-align: center">
+                        <a style="color:#ef473a" class="subdued" ng-if="class.NbAbsences > 1">{{class.NbAbsences}} Absences</a>
+                        <a style="color:#ef473a" class="subdued" ng-if="class.NbAbsences == 1">{{class.NbAbsences}} Absence</a>
+                        <a style="color:#ef473a" class="subdued" ng-if="class.NbAbsences == 0">Pas d'absent</a>
+                    </div>
+                    <div class="col col-33" style="text-align: center" ng-click="showModalComplex('templates/showAllAbsencesDelays.html', class.ClassID)">
+                        <i class="icon ion-ios-eye"></i>
+                    </div>
+                    <div class="col col-33" style="text-align: center">
+                        <a style="color:#ffc900" class="subdued" ng-if="class.NbDelays > 1">{{class.NbDelays}} Retards</a>
+                        <a style="color:#ffc900" class="subdued" ng-if="class.NbDelays == 1">{{class.NbDelays}} Retard</a>
+                        <a style="color:#ffc900" class="subdued" ng-if="class.NbDelays == 0">Pas de retard</a>
+                    </div>
+                </div-->
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
